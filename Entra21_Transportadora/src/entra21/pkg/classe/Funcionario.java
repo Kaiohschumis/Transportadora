@@ -4,7 +4,7 @@ public class Funcionario {
 	private static int codigoFuncionario;
 	private static String nomeFuncionario;
 	private static String cpf;
-	private static double salario;
+	private static double salario21;
 	private static int idade;
 	private static char sexo;
 	private static String funcao;
