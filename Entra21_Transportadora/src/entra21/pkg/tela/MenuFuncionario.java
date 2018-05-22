@@ -14,10 +14,10 @@ public class MenuFuncionario {
 			while (menu != 0) {
 				switch (menu) {
 				case 1:
-					cadastro.registra();
+					
 					break;
 				case 2:
-					cadastro.consulta();
+					
 					break;
 				case 0:
 					//menuPrincipal.abreMenu();
