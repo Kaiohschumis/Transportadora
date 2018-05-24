@@ -34,14 +34,35 @@ public class Funcionario {
 	
 	public void consulta() {
 		String busca = JOptionPane.showInputDialog(null, 
-			"Digite o nome para Buscar:\n[T] Listar todos\n[R] Retornar");
+			"[P] Pesquisar por Nome\n[T] Listar todos\n[R] Retornar");
 		
-		for (int i = 0; i < vetorCodigo.length; i++) {
+		switch (busca) {
+			case "P":
+				break;
+			case "T":
+				consultaTodos();
+				break;
+			case "R":
+				break;
+			default:
+				JOptionPane.showMessageDialog(null, "Opção Invalida");
+				break;
+			}
+		
+		/*for (int i = 0; i < vetorCodigo.length; i++) {
 			if (vetorNome[i] == busca) {
 				System.out.println("encontrado: " + vetorNome[i]);
 				break;
 			} else {
 				System.out.println("nao encontrado");
+			}
+		}*/
+	}
+	
+	public void consultaTodos() {
+		for (int i = 0; i < vetorNome.length; i++) {
+			if (vetorNome[i] != null) {
+				System.out.println(vetorNome[i]);
 			}
 		}
 	}
