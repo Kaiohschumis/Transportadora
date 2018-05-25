@@ -2,67 +2,211 @@ package entra21.pkg.classe;
 
 import javax.swing.JOptionPane;
 
+import entra21.pkg.menu.MenuPrincipal;
+
 public class Funcionario {
-	int tamanho = 100;
+	static int tamanho = 100, ultimo = 0;
+	static boolean continua = false;
 	
-	int[] vetorCodigo = new int[tamanho];
-	String[] vetorNome = new String[tamanho];
-	String[] vetorCpf = new String[tamanho];
-	double[] vetorSalario = new double[tamanho];
-	int[] vetorIdade = new int[tamanho];
-	char[] vetorSexo = new char[tamanho];
-	String[] vetorFuncao = new String[tamanho];
-	
-	int ultimo = 0;
+	static int[] vetorCodigo = new int[tamanho];
+	static String[] vetorNome = new String[tamanho];
+	static String[] vetorCpf = new String[tamanho];
+	static double[] vetorSalario = new double[tamanho];
+	static int[] vetorIdade = new int[tamanho];
+	static char[] vetorSexo = new char[tamanho];
+	static String[] vetorFuncao = new String[tamanho];
 	
 	public void cadastro() {
-		insere(ultimo);
+		validaCampos(ultimo);
 		ultimo++;
 	}
 	
-	public void insere(int posicao) {
-		vetorCodigo[posicao] = posicao;
-		vetorNome[posicao] = JOptionPane.showInputDialog(null, "Nome Completo:");
-		vetorCpf[posicao] = JOptionPane.showInputDialog(null, "CPF:");
-		vetorSalario[posicao] = Double.parseDouble(
-			JOptionPane.showInputDialog(null, "Salário (R$):"));
-		vetorIdade[posicao] = Integer.parseInt(
-			JOptionPane.showInputDialog(null, "Idade:"));
-		vetorSexo[posicao] = JOptionPane.showInputDialog(null, "Sexo:\n[M]\n[F]").charAt(0);
-		vetorFuncao[posicao] = JOptionPane.showInputDialog(null, "Função");
+	public void validaCampos(int posicao) {
+		while (!continua) {
+			vetorCodigo[posicao] = posicao;
+			
+			validaNome(posicao);
+			
+			validaIdade(posicao);
+			
+			validaCPF(posicao);
+			
+			validaSalario(posicao);
+			
+			validaSexo(posicao);
+			
+			vetorFuncao[posicao] = JOptionPane.showInputDialog(null, "Função");
+			
+			JOptionPane.showMessageDialog(null, "Dados cadastrados com sucesso!");
+			
+			continua = true;
+		}
 	}
 	
 	public void consulta() {
-		String busca = JOptionPane.showInputDialog(null, 
-			"[P] Pesquisar por Nome\n[T] Listar todos\n[R] Retornar");
+		MenuPrincipal menu = new MenuPrincipal();
+		
+		char busca = JOptionPane.showInputDialog(null, 
+			"*** CONSULTA FUNCIONARIO ***\n\n" +
+			"[P] Pesquisa por nome\n" +
+			"[T] Exibir Todos\n" +
+			"[R] Retorna ao Menu Principal").toLowerCase().charAt(0);
 		
 		switch (busca) {
-			case "P":
+			case 'p':
+				consultaNome();
 				break;
-			case "T":
+			case 't':
 				consultaTodos();
 				break;
-			case "R":
+			case 'r':
+				menu.abreMenu();
 				break;
 			default:
 				JOptionPane.showMessageDialog(null, "Opção Invalida");
 				break;
 			}
+	}
+	
+	public static String validaNome(int posicao) {
+		String nome = "";
 		
-		/*for (int i = 0; i < vetorCodigo.length; i++) {
-			if (vetorNome[i] == busca) {
-				System.out.println("encontrado: " + vetorNome[i]);
+		while (!continua) {
+			try {
+				nome =removeSpeciais(
+					JOptionPane.showInputDialog(null, "Nome Completo:"));
 				break;
-			} else {
-				System.out.println("nao encontrado");
+			} catch (Exception ex) {}
+		}
+		vetorNome[posicao] = nome;
+		
+		return vetorNome[posicao];
+	}
+	
+	public static int validaIdade(int posicao) {
+		int idade = 0;
+		
+		while (!continua) {
+			try {
+				idade = Integer.parseInt(
+					JOptionPane.showInputDialog(null, "Idade:"));
+				
+				continua = true;
+				break;
+			} catch (Exception ex) {
+				JOptionPane.showMessageDialog(null, "Ups, não eh numero");
 			}
-		}*/
+		}
+		vetorIdade[posicao] = idade;
+		
+		return vetorIdade[posicao];
+	}
+	
+	public static String validaCPF(int posicao) {
+		boolean validaCPF = false;
+		String cpf = "";
+		
+		while (continua) {
+			try {
+				while (!validaCPF) {
+					cpf = JOptionPane.showInputDialog(null, 
+						"CPF:").replace(".", "").replace("-", "").trim();
+					
+					if (cpf.isEmpty() || cpf.length() != 11) {
+						JOptionPane.showMessageDialog(null, "CPF tem de ter 11 digitos");
+					} else {
+						validaCPF = true;
+					}
+				}
+				break;
+			} catch (Exception ex) {
+				JOptionPane.showMessageDialog(null, "CPF incorreto");
+			}
+		}
+		vetorCpf[posicao] = cpf;
+		return vetorCpf[posicao];
+	}
+	
+	public static double validaSalario(int posicao) {
+		double salario = 0;
+		
+		while (continua) {
+			try {
+				salario = Double.parseDouble(
+					JOptionPane.showInputDialog(null, "Salário (R$):"));
+				break;
+			} catch (Exception ex) {
+				JOptionPane.showMessageDialog(null, "Salario incorreto");
+			}
+		}
+		vetorSalario[posicao] = salario;
+		
+		return vetorSalario[posicao];
+	}
+	
+	public static char validaSexo(int posicao) {
+		boolean validaSexo = false;
+		
+		while (continua) {
+			while (!validaSexo) {
+				try {
+					char sexo = 0;
+					
+					sexo = JOptionPane.showInputDialog(
+						null, "Informe o Sexo:\n[M] Masculino\n[F] Feminino").charAt(0);
+					
+					if (sexo == 'M' || sexo == 'm') {
+						vetorSexo[posicao] = sexo;
+						validaSexo = true;
+					}
+					if (sexo == 'F' || sexo == 'f') {
+						vetorSexo[posicao] = sexo;
+						validaSexo = true;
+					} else {
+						JOptionPane.showMessageDialog(null, "Sexo nao corresponde");
+					}
+					break;
+				} catch (Exception ex) {
+					JOptionPane.showMessageDialog(null, "Sexo invalido");
+				}
+			}
+			continua = false;
+		}
+		return vetorSexo[posicao];
+	}
+	
+	public static void consultaNome() {
+		boolean procura = false;
+		
+		String nome = JOptionPane.showInputDialog(
+			"Entre um nome de Funcionario:");
+		
+		while (!procura) {
+			for (int i = 0; i < vetorCodigo.length; i++) {
+				if (nome == vetorNome[i]) {
+					JOptionPane.showMessageDialog(null, nome + "\n");
+				} else {
+					JOptionPane.showMessageDialog(null, 
+						"Funcionario \"" + nome + "\" nao encontrado");
+					break;
+				}
+			}
+		}
+	}
+	
+	public static String removeSpeciais(String texto) {
+		texto = texto.replaceAll("[a-zA-Z\\w]", "").trim();
+		
+		return texto;
 	}
 	
 	public void consultaTodos() {
 		for (int i = 0; i < vetorNome.length; i++) {
 			if (vetorNome[i] != null) {
-				System.out.println(vetorNome[i]);
+				JOptionPane.showMessageDialog(null,
+					vetorNome[i] + "\n");
+			} else {
+				JOptionPane.showMessageDialog(null, "Nenhum Funcionario registrado");
 			}
 		}
 	}
