@@ -45,7 +45,8 @@ public class Funcionario {
 	
 	public void consulta() {
 		MenuPrincipal menu = new MenuPrincipal();
-		
+		/*boolean x = false;
+		while (!x) {*/
 		char busca = JOptionPane.showInputDialog(null, 
 			"*** CONSULTA FUNCIONARIO ***\n\n" +
 			"[P] Pesquisa por nome\n" +
@@ -61,12 +62,14 @@ public class Funcionario {
 				break;
 			case 'r':
 				menu.abreMenu();
+				//x = true;
 				break;
 			default:
 				JOptionPane.showMessageDialog(null, "Opção Invalida");
 				break;
 			}
-	}
+		}
+	//}
 	
 	public static String validaNome(int posicao) {
 		String nome = "";
@@ -190,10 +193,11 @@ public class Funcionario {
 						"Funcionario \"" + nome + "\" nao encontrado");
 					
 					System.out.println("2");
+					break;
 				}
 			}
 			System.out.println("3");
-			//procura = true;
+			procura = true;
 		}
 	}
 	
