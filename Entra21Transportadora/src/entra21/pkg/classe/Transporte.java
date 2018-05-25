@@ -1,4 +1,4 @@
-package entra21.pkg;
+package entra21.pkg.classe;
 
 import javax.swing.JOptionPane;
 

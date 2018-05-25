@@ -214,6 +214,7 @@ public class Funcionario {
 					vetorNome[i] + "\n");
 			} else {
 				JOptionPane.showMessageDialog(null, "Nenhum Funcionario registrado");
+				break;
 			}
 		}
 	}

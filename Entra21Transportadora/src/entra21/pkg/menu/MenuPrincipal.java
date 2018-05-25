@@ -2,10 +2,10 @@ package entra21.pkg.menu;
 
 import javax.swing.JOptionPane;
 
-import entra21.pkg.Carga;
-import entra21.pkg.Empresa;
-import entra21.pkg.Encomenda;
-import entra21.pkg.Transporte;
+import entra21.pkg.classe.Carga;
+import entra21.pkg.classe.Empresa;
+import entra21.pkg.classe.Encomenda;
+import entra21.pkg.classe.Transporte;
 
 public class MenuPrincipal {
 	MenuFuncionario menuFuncionario = new MenuFuncionario();
@@ -31,14 +31,19 @@ public class MenuPrincipal {
 				switch (menu) {
 				case 1:
 					menuFuncionario.funcionario();
+					break;
 				case 2:
 					 transportee.cadastroTransporte();
+					 break;
 				case 3:
 					 encomenda.cadastroEncomeda();
+					 break;
 				case 4:
 					 carga.cadastroCarga();
+					 break;
 				case 5:
 					 empresa.cadastroEmpresa();
+					 break;
 				case 0:
 					valida = true;
 					break;
