@@ -1,7 +1,5 @@
 package entra21.pkg;
 
-
-
 import javax.swing.JOptionPane;
 
 public class Empresa{

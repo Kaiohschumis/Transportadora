@@ -3,7 +3,7 @@
  */
 package entra21.pkg.principal;
 
-import entra21.pkg.tela.MenuPrincipal;
+import entra21.pkg.menu.MenuPrincipal;
 
 /**
  * @author Freakazed-PC
