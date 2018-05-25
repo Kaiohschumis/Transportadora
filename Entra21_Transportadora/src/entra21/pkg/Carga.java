@@ -1,14 +1,16 @@
+package entra21.pkg;
+
 import javax.swing.JOptionPane;
 
 public class Carga{
-    public static void main(String[] args){
+    public void cadastroCarga(int posicao){
     
     int tamanho = 100;
     int atual = 0;
-    String[] idsCarga = new String[tamanho];
+    String[] idsCarga = new String[tamanho];                                                                 
     double[] pesos = new double[tamanho];
     String[] origens = new String[tamanho];
-    String[] destinos = new String[tamanho];
+    String[] destinos = new String[tamanho];  
     int[] kms = new int[tamanho];
     double[] prices = new double[tamanho];
     String[] descricao = new String[tamanho];

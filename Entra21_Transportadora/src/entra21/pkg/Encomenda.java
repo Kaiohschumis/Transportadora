@@ -1,7 +1,9 @@
+package entra21.pkg;
+
 import javax.swing.JOptionPane;
 
 public class Encomenda{
-    public static void main(String[] args){
+    public void cadastroEncomeda(int posicao){
     
     int tamanho = 100;
     int atual1 = 0;

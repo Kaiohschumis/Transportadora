@@ -1,7 +1,9 @@
+package entra21.pkg;
+
 import javax.swing.JOptionPane;
 
 public class Transporte{
-    public static void main(String[] args){
+    public void cadastroTransporte(int posicao) {
         
         int atual = 0;
         int tamanho = 100;
