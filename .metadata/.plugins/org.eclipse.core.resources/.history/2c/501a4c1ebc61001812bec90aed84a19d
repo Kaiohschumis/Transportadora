@@ -1,0 +1,91 @@
+package entra21.validacao;
+
+import javax.swing.JOptionPane;
+
+public class ValidacaoCampos {
+	String nome = "";
+	int idade = 0;
+	String cpf = "";
+	double salario = 0;
+	
+	public String validaNomePessoa() {
+		boolean valida = false;
+		
+		while (!valida) {
+			try {
+				nome = JOptionPane.showInputDialog(null, "Nome Completo:");
+				
+				if (nome.isEmpty()) {
+					JOptionPane.showMessageDialog(null, "Entre um Nome abaixo:");
+				} else {
+					nome = nome.replace("[0-9]", "");
+					valida = true;
+				}
+			} catch (Exception ex) {
+				System.out.println(ex.getMessage());
+				JOptionPane.showMessageDialog(null, "Por favor, preencha com Nome");
+			}
+		}
+		return nome;
+	}
+	
+	public int validaIdade() {
+		boolean valida = false;
+		
+		while (!valida) {
+			try {
+				idade = Integer.parseInt(
+					JOptionPane.showInputDialog(null, "Entre uma Idade:"));
+				
+				if (idade <= 0 || idade > 130) {
+					JOptionPane.showMessageDialog(null, "Entre uma idade corretamente");
+				} else {
+					valida = true;
+				}
+			} catch (Exception ex) {
+				System.out.println(ex.getMessage());
+				JOptionPane.showMessageDialog(null, "Por favor, preencha com uma idade");
+			}
+		}
+		
+		return idade;
+	}
+	
+	public String confereCPF() {
+		String novoCPF = "";
+		
+		boolean valida = false;
+		
+		while (!valida) {
+			cpf = JOptionPane.showInputDialog(null, "Entre com CPF:\nExemplo: 987.654.321-09");
+			
+			if (cpf.length() != 14) {
+				JOptionPane.showMessageDialog(null, "CPF deve conter 14 digitos");
+			} else {
+				novoCPF = cpf.replace(".", "").replace("-", "");
+				valida = true;
+			}
+		}
+		return novoCPF;
+	}
+	
+	public double validaSalario() {
+		boolean valida = false;
+		
+		while (!valida) {
+			try {
+				salario = Double.parseDouble(JOptionPane.showInputDialog(null, "Salario R$:\nEx: 9.99"));
+				
+				if (salario < 0) {
+					JOptionPane.showMessageDialog(null, "Salario nao pode ser negativo");
+				} else {
+					valida = true;
+				}
+			} catch (Exception ex) {
+				System.out.println(ex.getMessage());
+				JOptionPane.showMessageDialog(null, "Informe um numero de Salario");
+			}
+		}
+		return salario;
+	}
+}

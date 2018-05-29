@@ -1,0 +1,45 @@
+package entra21.janela;
+
+import javax.swing.JOptionPane;
+
+public class MenuPrincipal {
+	public void monstraMenu() {
+		// Inicia a instancia da Classe Funcionario
+		MenuFuncionario menuFuncionario = new MenuFuncionario();
+		// Condicao para validacao
+		boolean continua = true;
+		
+		// Enquanto condicao do menu ser valido, continua
+		while (continua) {
+			// Tratamento de erros
+			try {
+				// Apresenta um menu de entrada para usuario
+				int menuPrincipal = Integer.parseInt(
+					JOptionPane.showInputDialog(null, 
+					"*** MENU PRINCIPAL ***\n\n"
+					+ "[1] FUNCIONARIO\n"
+					+ "[0] ENCERRAR"
+				));
+				
+				// Atribui uma condicao para a opcao escolhida.
+				// Caso condicao bater, entra na funcao da Classe de acesso
+				switch (menuPrincipal) {
+				case 1:
+					// Acessa classe Funcionario
+					menuFuncionario.menuFuncionario();
+					break;
+				case 0:
+					continua = false;
+					break;
+				default:
+					JOptionPane.showMessageDialog(null, "Opcao incorreta");
+					break;
+				}
+			} catch (Exception ex) {
+				// Exibe uma mensagem para usuario e um erro de sistema oculto
+				System.out.println(ex.getMessage());
+				JOptionPane.showMessageDialog(null, "UPS... Entre uma opcao valida");
+			}
+		}
+	}
+}

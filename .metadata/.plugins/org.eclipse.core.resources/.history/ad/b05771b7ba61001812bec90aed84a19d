@@ -1,0 +1,123 @@
+package entra21.classe;
+
+import javax.swing.JOptionPane;
+
+import entra21.validacao.ValidacaoCampos;
+
+public class Funcionario {
+	// Define um tamanho fixo para os Arrays da Classe
+	static int tamanho = 100;
+	
+	// Criacao dos arrays da classe para armazenar as infos
+	//static String[] vetorNome = new String[tamanho];
+	//static int[] vetorIdade = new int[tamanho];
+	//static String[] vetorCPF = new String[tamanho];
+	
+	// Array padrao fixo para inserir valores
+	static String[] vetorNome = new String[] {
+		"Marcio", "Jose", "Paulo", "Ricardo", "Ana", "Matheus", "Fabiola", 
+		"Bruna", "Alessandra", "Camila", "Fernando", "Gabriela"
+	};
+	// Array padrao fixo para inserir valores
+	static int[] vetorIdade = new int[] {
+		23, 58, 34, 17, 54, 21, 19, 43, 29, 65, 37, 26
+	};
+	// Array padrao fixo para inserir valores
+	static String[] vetorCPF = new String[] {
+		"012.938.574-01", "293.847.565-74", "839.102.938-47", "556.743.801-29", 
+		"384.657.483-92", "029.384.765-74", "230.948.209-48", "209.342.375-89", 
+		"232.385.943-02", "950.294.583-09", "582.583.906-34", "392.478.937-23"
+	};
+	// Array padrao fixo para inserir valores
+	static double[] vetorSalario = new double[] {
+		1700, 1450, 1300, 1250, 2300, 2100, 1650, 1400, 2800, 2380, 1500, 1900 
+	};
+	// Array padrao fixo para inserir valores
+	static char[] vetorSexo = new char[] {
+		'M', 'M', 'M', 'M', 'F', 'M', 'F', 'F', 'F', 'F', 'M', 'F'
+	};
+	
+	// Cria uma funcao de cadastro para armazenar valores
+	public void cadastraFuncionario() {
+		// Inicia instancia de acesso da Classe
+		ValidacaoCampos valida = new ValidacaoCampos();
+		
+		// Acessa a funcao para obter o ultima posicao de array
+		int posicao = ultimaPosicao();
+		
+		// Os vetores somente recebem um valor na posicao caso
+		// a funcao de insercao de registro validar
+		vetorNome[posicao] = valida.validaNomePessoa();
+		vetorIdade[posicao] = valida.validaIdade();
+		vetorCPF[posicao] = valida.confereCPF();
+		vetorSalario[posicao] = valida.validaSalario();
+	}
+	
+	// Percorre o array para pegar a posicao mais atual 
+	public int ultimaPosicao() {
+		// Define uma posicao
+		int posicao = 0;
+		
+		// 
+		for (int i = 0; i < vetorNome.length; i++) {
+			if (vetorNome[i] == null) {
+				posicao = i;
+				break;
+			}
+		}
+		
+		return posicao;
+	}
+	
+	public void consultaFuncionario() {
+		boolean encontrado = false;
+		String pesquisaNome = "", nomes = "";
+		int contador = 0;
+		
+		while (!encontrado) {
+			pesquisaNome = JOptionPane.showInputDialog(null, 
+				"Pesquisar Nome de Funcionario:\n[ESC] Sair").toLowerCase();
+			
+			if (!pesquisaNome.isEmpty()) {
+				for (int i = 0; i < vetorNome.length; i++) {
+					if (vetorNome[i].toLowerCase().contains(pesquisaNome)) {
+						nomes += "\n" + vetorNome[i];
+						contador = contador + 1;
+						encontrado = true;
+					}
+				}
+				if (!encontrado) {
+					JOptionPane.showMessageDialog(null, "Nenhum registro encontrado");
+				}
+			} else {
+				JOptionPane.showMessageDialog(null, "Entre um Nome");
+			}
+			if (contador > 0) {
+				JOptionPane.showMessageDialog(null, 
+					"*** RESULTADO ***\n\n[" + contador + "] NOMES COM \"" 
+					+ pesquisaNome + "\" ENCONTRADOS:\n" + nomes);
+			}
+		}
+	}
+	
+	public void listaFuncionario() {
+		String nomes = "";
+		boolean vazio = true;
+		int contador = 0;
+		
+		for (int i = 0; i < vetorNome.length; i++) {
+			if (vetorNome[i] != null) {
+				nomes += "\n" + vetorNome[i] + ", " + vetorIdade[i] + " anos";
+				contador = contador + 1;
+				vazio = false;
+			}
+		}
+		
+		if (vazio) {
+			JOptionPane.showMessageDialog(null, "Nenhum Funcionario cadastrado");
+		} else {
+			JOptionPane.showMessageDialog(null,
+				"*** LISTA DE FUNCIONARIOS [ " + contador + " ] ***\n" + nomes);
+		}
+	}
+}

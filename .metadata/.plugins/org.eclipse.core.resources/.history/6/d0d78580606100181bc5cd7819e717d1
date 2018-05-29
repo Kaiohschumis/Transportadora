@@ -1,0 +1,103 @@
+package entra21.validacao;
+
+import javax.swing.JOptionPane;
+
+public class ValidacaoCampos {
+	String nome = "";
+	int idade = 0;
+	String cpf = "";
+	
+	public String validaNomePessoa() {
+		boolean valida = false;
+		
+		while (!valida) {
+			try {
+				nome = JOptionPane.showInputDialog(null, "Nome Completo:");
+				
+				if (nome.isEmpty()) {
+					JOptionPane.showMessageDialog(null, "Entre um Nome abaixo:");
+				} else {
+					nome = nome.replace("[0-9]", "");
+					valida = true;
+				}
+			} catch (Exception ex) {
+				System.out.println(ex.getMessage());
+				JOptionPane.showMessageDialog(null, "Por favor, preencha com Nome");
+			}
+		}
+		return nome;
+	}
+	
+	public int validaIdade() {
+		boolean valida = false;
+		
+		while (!valida) {
+			try {
+				idade = Integer.parseInt(
+					JOptionPane.showInputDialog(null, "Entre uma Idade:"));
+				
+				if (idade <= 0 || idade > 130) {
+					JOptionPane.showMessageDialog(null, "Entre uma idade corretamente");
+				} else {
+					valida = true;
+				}
+			} catch (Exception ex) {
+				System.out.println(ex.getMessage());
+				JOptionPane.showMessageDialog(null, "Por favor, preencha com uma idade");
+			}
+		}
+		
+		return idade;
+	}
+	
+	public String confereCPF() {
+		String pos1 = "", pos2 = "", pos3 = "", pos4 = "", 
+			pos5 = "", pos6 = "", pos7 = "", pos8 = "", 
+			pos9 = "", pos10 = "", pos11 = "", novoCPF = "";
+		
+		while (!valida) {
+		cpf = JOptionPane.showInputDialog(null, "Entre com CPF:\nExemplo: 987.654.321-09");
+		
+		novoCPF = cpf.replace(".", "").replace("-", "");
+		
+		pos1 = novoCPF.substring(0, 1);
+		pos2 = novoCPF.substring(1, 2);
+		pos3 = novoCPF.substring(2, 3);
+		pos4 = novoCPF.substring(3, 4);
+		pos5 = novoCPF.substring(4, 5);
+		pos6 = novoCPF.substring(5, 6);
+		pos7 = novoCPF.substring(6, 7);
+		pos8 = novoCPF.substring(7, 8);
+		pos9 = novoCPF.substring(8, 9);
+		pos10 = novoCPF.substring(9, 10);
+		pos11 = novoCPF.substring(10, 11);
+		
+		validaCPF(pos1);
+		validaCPF(pos2);
+		validaCPF(pos3);
+		validaCPF(pos4);
+		validaCPF(pos5);
+		validaCPF(pos6);
+		validaCPF(pos7);
+		validaCPF(pos8);
+		validaCPF(pos9);
+		validaCPF(pos10);
+		validaCPF(pos11);
+		
+		return novoCPF;
+	}
+	
+	public void validaCPF(String pos) {
+		try {
+			for (int i = 0; i < 11; i++) {
+				if (i != Integer.parseInt(pos)) {
+					JOptionPane.showMessageDialog(null, "CPF nao confere");
+					break;
+				}
+			}
+		} catch (Exception ex) {
+			System.out.println(ex.getMessage());
+			JOptionPane.showMessageDialog(null, "Tipo de CPF incorreto");
+		}
+	}
+}

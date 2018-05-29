@@ -1,0 +1,37 @@
+package entra21.janela;
+
+import javax.swing.JOptionPane;
+import entra21.classe.Funcionario;
+
+public class MenuPrincipal {
+	boolean continua = false;
+	
+	public void monstraMenu() {
+		Funcionario funcionario = new Funcionario();
+		
+		while (!continua) {
+			try {
+				int opcao = Integer.parseInt(JOptionPane.showInputDialog(null,
+					"*** MENU PRINCIPAL - TELAS ***\n\n" +
+					"[1] FUNCIONARIO\n" +
+					"[0] ENCERRAR"
+				));
+				
+				switch (opcao) {
+					case 1:
+						funcionario.cadastraFuncionario();
+						break;
+					case 0:
+						continua = true;
+						break;
+					default:
+						JOptionPane.showMessageDialog(null, "Opcao incorreta");
+					break;
+				}
+			} catch (Exception ex) {
+				JOptionPane.showMessageDialog(null, "UPS... Entre uma opcao valida");
+			}
+		}
+		
+	}
+}

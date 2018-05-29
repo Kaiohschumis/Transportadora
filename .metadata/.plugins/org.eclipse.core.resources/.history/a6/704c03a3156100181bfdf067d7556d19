@@ -1,0 +1,16 @@
+package entra21.janela;
+
+import javax.swing.JOptionPane;
+
+public class MenuPrincipal {
+	public void monstraMenu() {
+		boolean continua = false;
+		int menuPrincipal = Integer.parseInt(
+			JOptionPane.showInputDialog(null, 
+			"*** MENU PRINCIPAL ***\n\n"
+			+ "[1] FUNCIONARIO\n"
+			+ "[0] ENCERRAR"));
+		
+		
+	}
+}

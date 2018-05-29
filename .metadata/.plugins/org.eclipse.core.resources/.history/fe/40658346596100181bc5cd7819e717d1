@@ -1,0 +1,45 @@
+package entra21.aplicacao;
+
+import javax.swing.JOptionPane;
+import entra21.janela.MenuPrincipal;
+import entra21.validacao.ValidacaoCampos;
+
+public class Inicializa {
+	public static void main(String[] args) {
+		ValidacaoCampos valida = new ValidacaoCampos();
+		
+		String cpf = "fa0.e00. 00-ç0",
+			pos1 = "", pos2 = "", pos3 = "", pos4 = "", 
+			pos5 = "", pos6 = "", pos7 = "", pos8 = "", 
+			pos9 = "", pos10 = "", pos11 = "";
+		
+		cpf = cpf.replace(".", "").replace("-", "");
+		
+		pos1 = cpf.substring(0, 1);
+		pos2 = cpf.substring(1, 2);
+		pos3 = cpf.substring(2, 3);
+		pos4 = cpf.substring(3, 4);
+		pos5 = cpf.substring(4, 5);
+		pos6 = cpf.substring(5, 6);
+		pos7 = cpf.substring(6, 7);
+		pos8 = cpf.substring(7, 8);
+		pos9 = cpf.substring(8, 9);
+		pos10 = cpf.substring(9, 10);
+		pos11 = cpf.substring(10, 11);
+		
+		valida.cpfPosition(pos1);
+		valida.cpfPosition(pos2);
+		valida.cpfPosition(pos3);
+		valida.cpfPosition(pos4);
+		valida.cpfPosition(pos5);
+		valida.cpfPosition(pos6);
+		valida.cpfPosition(pos7);
+		valida.cpfPosition(pos8);
+		valida.cpfPosition(pos9);
+		valida.cpfPosition(pos10);
+		valida.cpfPosition(pos11);
+		
+		//MenuPrincipal menuPrincipal = new MenuPrincipal();
+		//menuPrincipal.monstraMenu();
+	}
+}

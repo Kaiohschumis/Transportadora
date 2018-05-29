@@ -1,0 +1,42 @@
+import javax.swing.JOptionPane;
+
+public class Test {
+	
+	
+	public static void main(String[] args) {
+		boolean valida = false, validaNome = false;
+		
+		String nome = "";
+		int idade = 0;
+		
+		
+		while (!valida) {
+			nome = JOptionPane.showInputDialog(null, "Nome:");
+			nome = removeSpeciais(nome);
+			
+			
+		System.out.println(
+			nome + "\n" +
+			idade + "\n"
+		);
+		JOptionPane.showMessageDialog(null, "Salvo!");
+	}
+		
+	public void validaInteiro() {
+		while (!validaNome) {
+			try {
+				idade = Integer.parseInt(
+					JOptionPane.showInputDialog(null, "Idade:"));
+				validaNome = true;
+			} catch (Exception ex) {
+				JOptionPane.showMessageDialog(null, "Não eh numero");
+			}
+		}
+	}
+	
+	public static String removeSpeciais(String texto) {
+		texto = texto.replaceAll("[^a-zA-Z\\w]", "").trim();
+		
+		return texto;
+	}
+}

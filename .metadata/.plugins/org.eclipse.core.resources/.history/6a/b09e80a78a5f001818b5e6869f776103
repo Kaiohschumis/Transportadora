@@ -1,0 +1,34 @@
+package entra21.pkg.kaio;
+
+import javax.swing.JOptionPane;
+
+public class Transporte{
+    public void insereTransporte() {
+        
+        int atual = 0;
+        int tamanho = 100;
+        String[] ids = new String[tamanho];
+        String[] tVecs = new String[tamanho];
+        double[] capacidades = new double[tamanho];
+        String[] models = new String[tamanho];
+        String[] marcas = new String[tamanho];
+        int[] kms = new int[tamanho];
+        int[] anos = new int[tamanho];
+        double[] custo = new double[tamanho];
+    
+        ids[atual] = JOptionPane.showInputDialog(null, "Digite o id do veiculo");
+        tVecs[atual] = JOptionPane.showInputDialog(null, "Tipo de veiculo");
+        capacidades[atual] = Double.parseDouble(JOptionPane.showInputDialog(null, "Capacidade do veiculo"));
+        models[atual] = JOptionPane.showInputDialog(null, "Modelo do veiculo");
+        marcas[atual] = JOptionPane.showInputDialog(null, "Fabricante do veiculo");
+        kms[atual] = Integer.parseInt(JOptionPane.showInputDialog(null, "Quilometragem do veiculo"));
+        anos[atual] = Integer.parseInt(JOptionPane.showInputDialog(null, "Ano do veiculo"));
+        //verificar!!
+        custo[atual] = Double.parseDouble(JOptionPane.showInputDialog(null, "Custo do transporte"));
+        
+        
+        
+            
+            
+        }        
+}

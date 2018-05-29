@@ -1,0 +1,50 @@
+package entra21.janela;
+
+import javax.swing.JOptionPane;
+import entra21.classe.Funcionario;
+
+public class MenuFuncionario {
+	public void menuFuncionario() {
+		// Inicializa a Classe Funcionario com instancia
+		Funcionario funcionario = new Funcionario();
+		// Condicao de validacao
+		boolean continua = true;
+		
+		// Continua execucao ate condicao nao corresponder
+		while (continua) {
+			try {
+				// Valor de entrada pra usuario
+				int opcao = Integer.parseInt(JOptionPane.showInputDialog(null,
+					"*** MENU FUNCIONARIO ***\n\n" +
+					"[1] NOVO FUNCIONARIO\n" +
+					"[2] LISTA DE FUNCIONARIOS\n" +
+					"[3] PESQUISA FUNCIONARIO\n" +
+					"[0] MENU PRINCIPAL"
+				));
+				
+				// Pega o valor de entrada e atribui uma opcao
+				switch (opcao) {
+					case 1:
+						// Acesso da funcao Funcionario
+						funcionario.cadastraFuncionario();
+						break;
+					case 2:
+						funcionario.listaFuncionario();
+						break;
+					case 3:
+						funcionario.consultaFuncionario();
+						break;
+					case 0:
+						continua = false;
+						break;
+					default:
+						JOptionPane.showMessageDialog(null, "Opcao incorreta");
+						break;
+				}
+			} catch (Exception ex) {
+				System.out.println(ex.getMessage());
+				JOptionPane.showMessageDialog(null, "UPS... Entre uma opcao valida");
+			}
+		}
+	}
+}

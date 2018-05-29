@@ -1,0 +1,13 @@
+package entra21.aplicacao;
+
+import entra21.janela.MenuPrincipal;
+import entra21.validacao.PreencheVetores;
+
+public class Inicializa {
+	public static void main(String[] args) {
+		PreencheVetores preenche = new PreencheVetores();
+		
+		MenuPrincipal menuPrincipal = new MenuPrincipal();
+		menuPrincipal.monstraMenu();
+	}
+}

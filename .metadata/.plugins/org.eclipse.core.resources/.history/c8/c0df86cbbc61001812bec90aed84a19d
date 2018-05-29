@@ -1,0 +1,109 @@
+package entra21.validacao;
+
+import javax.swing.JOptionPane;
+
+public class ValidacaoCampos {
+	// Variaveis de acesso da Classe
+	String nome = "";
+	int idade = 0;
+	String cpf = "";
+	double salario = 0;
+	
+	// Metodo para validar Nomes
+	public String validaNomePessoa() {
+		// Atribui condicao de validacao
+		boolean valida = false;
+		
+		// Caso condicao corresponder
+		while (!valida) {
+			try {
+				// Usuario informa valor
+				nome = JOptionPane.showInputDialog(null, "Nome Completo:");
+				
+				// Caso registro vazio, exibe mensagem e repete
+				if (nome.isEmpty()) {
+					JOptionPane.showMessageDialog(null, "Entre um Nome abaixo:");
+				} else {
+					// Caso contrário, apaga numeros contidos e valida
+					nome = nome.replace("[0-9]", "");
+					valida = true;
+				}
+			} catch (Exception ex) {
+				// Exibe mensagem para usuario e erro para desenvolvedor
+				System.out.println(ex.getMessage());
+				JOptionPane.showMessageDialog(null, "Por favor, preencha com Nome");
+			}
+		}
+		// Retorna valord e entrada
+		return nome;
+	}
+	
+	// Validacao de Idade ou numeros inteiros
+	public int validaIdade() {
+		// Define condicao
+		boolean valida = false;
+		
+		// Enquanto condicao nao corresponder
+		while (!valida) {
+			try {
+				// Captura entrada de Usuario
+				idade = Integer.parseInt(
+					JOptionPane.showInputDialog(null, "Entre uma Idade:"));
+				
+				// Caso idade for diferente
+				if (idade <= 0 || idade > 130) {
+					JOptionPane.showMessageDialog(null, "Entre uma idade corretamente");
+				} else {
+					// Valida condicao
+					valida = true;
+				}
+			} catch (Exception ex) {
+				// Exibe mensagem para Usuario e erro para Desenvolvedor
+				System.out.println(ex.getMessage());
+				JOptionPane.showMessageDialog(null, "Por favor, preencha com uma idade");
+			}
+		}
+		// Retorna variavel da funcao
+		return idade;
+	}
+	
+	// Funcao confere CPF
+	public String confereCPF() {
+		// Define uma nova variavel
+		String novoCPF = "";
+		
+		boolean valida = false;
+		
+		while (!valida) {
+			cpf = JOptionPane.showInputDialog(null, "Entre com CPF:\nExemplo: 987.654.321-09");
+			
+			if (cpf.length() != 14) {
+				JOptionPane.showMessageDialog(null, "CPF deve conter 14 digitos");
+			} else {
+				novoCPF = cpf.replace(".", "").replace("-", "");
+				valida = true;
+			}
+		}
+		return novoCPF;
+	}
+	
+	public double validaSalario() {
+		boolean valida = false;
+		
+		while (!valida) {
+			try {
+				salario = Double.parseDouble(JOptionPane.showInputDialog(null, "Salario R$:\nEx: 9.99"));
+				
+				if (salario < 0) {
+					JOptionPane.showMessageDialog(null, "Salario nao pode ser negativo");
+				} else {
+					valida = true;
+				}
+			} catch (Exception ex) {
+				System.out.println(ex.getMessage());
+				JOptionPane.showMessageDialog(null, "Informe um numero de Salario");
+			}
+		}
+		return salario;
+	}
+}

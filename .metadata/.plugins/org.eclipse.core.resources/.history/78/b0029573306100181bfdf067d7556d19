@@ -1,0 +1,15 @@
+package entra21.aplicacao;
+
+import entra21.janela.MenuPrincipal;
+
+public class Inicializa {
+	public static void main(String[] args) {
+		private void carregaDadosPadrao() {
+			
+		}
+		
+		
+		MenuPrincipal menuPrincipal = new MenuPrincipal();
+		menuPrincipal.monstraMenu();
+	}
+}

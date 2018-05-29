@@ -1,0 +1,35 @@
+package entra21.aplicacao;
+
+import javax.swing.JOptionPane;
+import entra21.janela.MenuPrincipal;
+
+public class Inicializa {
+	public static void main(String[] args) {
+		carregaDadosPadrao();
+		
+		MenuPrincipal menuPrincipal = new MenuPrincipal();
+		menuPrincipal.monstraMenu();
+	}
+	
+	private static void carregaDadosPadrao() {
+		boolean inicia = false;
+		
+		while (!inicia) {
+			try {
+				int sistema = Integer.parseInt(JOptionPane.showInputDialog(null, 
+					"AVISO: Carregar Dados Padrao?\n\n[1] SIM\n[0] NAO"));
+				
+				switch (sistema) {
+					inicia = true;
+					break;
+				} else {
+					inicia = true;
+					break;
+				}
+			} catch (Exception ex) {
+				System.out.println(ex.getMessage());
+				JOptionPane.showMessageDialog(null, "Instrucao incorreta");
+			}
+		}
+	}
+}

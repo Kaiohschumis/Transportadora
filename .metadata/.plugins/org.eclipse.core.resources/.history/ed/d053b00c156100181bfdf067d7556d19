@@ -1,0 +1,9 @@
+package entra21.janela;
+
+import javax.swing.JOptionPane;
+
+public class MenuPrincipal {
+	public void monstraMenu() {
+		int menuPrincipal = Integer.parseInt(JOptionPane.showInputDialog(null))
+	}
+}

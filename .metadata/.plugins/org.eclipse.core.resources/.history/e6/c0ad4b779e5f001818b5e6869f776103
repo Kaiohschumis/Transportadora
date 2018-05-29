@@ -1,0 +1,39 @@
+package entra21.pkg.tela;
+
+import javax.swing.JOptionPane;
+import entra21.pkg.classe.Funcionario;
+
+public class MenuFuncionario {
+	Funcionario funcionario = new Funcionario();
+	MenuPrincipal menuPrincipal = new MenuPrincipal();
+	
+	public void funcionario() {
+		boolean valida = false;
+		
+		int menu = Integer.parseInt(JOptionPane.showInputDialog(null, 
+			"*** MENU FUNCIONARIO ***\n\n[1] CADASTRO\n[2] Consulta\n[0] VOLTAR"));
+		
+		while (!valida) {
+			try {
+				switch (menu) {
+				case 1:
+					funcionario.cadastro();
+					break;
+				case 2:
+					funcionario.consulta();
+					break;
+				case 0:
+					menuPrincipal.abreMenu();
+					valida = true;
+					break;
+				default:
+					break;
+				}
+				menu = Integer.parseInt(JOptionPane.showInputDialog(null, 
+					"*** MENU FUNCIONARIO ***\n\n[1] CADASTRO\n[2] Consulta\n[0] VOLTAR"));
+			} catch (Exception ex) {
+				System.out.println(ex.getMessage());
+			}
+		}
+	}
+}

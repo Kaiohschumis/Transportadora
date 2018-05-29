@@ -1,0 +1,17 @@
+package entra21.aplicacao;
+
+import javax.swing.JOptionPane;
+import entra21.janela.MenuPrincipal;
+
+public class Inicializa {
+	public static void main(String[] args) {
+		carregaDadosPadrao();
+		
+		MenuPrincipal menuPrincipal = new MenuPrincipal();
+		menuPrincipal.monstraMenu();
+	}
+	
+	private static void carregaDadosPadrao() {
+		JOptionPane.showInputDialog(null, "Carregar Dados Padrao?");
+	}
+}

@@ -1,0 +1,23 @@
+package entra21.validacao;
+
+public class PreencheVetores {
+	private static String[] vetorNome = new String[] {
+		"Marcio", "Jose", "Paulo", "Ricardo", "Ana", "Matheus", "Fabiola", 
+		"Bruna", "Alessandra", "Camila", "Fernando", "Gabriela"};
+	
+	private static int[] vetorIdade = new int[] {
+		23, 58, 34, 17, 54, 21, 19, 43, 29, 65, 37, 26};
+	
+	private static String[] vetorCPF = new String[] {
+		"012.938.574-01", "293.847.565-74", "839.102.938-47", "556.743.801-29", 
+		"384.657.483-92", "029.384.765-74", "230.948.209-48", "209.342.375-89", 
+		"232.385.943-02", "950.294.583-09", "582.583.906-34", "392.478.937-23"};
+	
+	public static String[] vetorNomeFuncionario() {
+		return (String[]) vetorNome.clone();
+	}
+	
+	public static int[] vetorIdadeFuncionario() {
+		return (int[]) vetorIdade.clone();
+	}
+}
